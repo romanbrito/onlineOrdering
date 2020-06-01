@@ -19,6 +19,7 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "cypress": "^4.7.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "prettier": "2.0.5"
@@ -34,7 +35,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "cy:open": "cypress open"
   },
   "husky": {
     "hooks": {
