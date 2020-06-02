@@ -19,6 +19,7 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
     "cypress": "^4.7.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
