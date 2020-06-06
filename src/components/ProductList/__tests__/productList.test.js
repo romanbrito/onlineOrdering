@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import {render, screen} from '@testing-library/react'
-import ProductList from '../index'
+import {PureProductList as ProductList} from '../index'
 
 // const data = {"allStrapiDish":{"edges":[
 //   {"node":{"id":"Dish_1","name":"test","price":333}},
