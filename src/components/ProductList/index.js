@@ -1,11 +1,19 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import {useStaticQuery, graphql} from 'gatsby'
+import {useStaticQuery, graphql, Link} from 'gatsby'
 
 export const PureProductList = ({data}) => {
   console.log(data)
 
-  return <div>Product List Component</div>
+  return (
+    <ul>
+      {data.allStrapiDish.edges.map(el => (
+        <li key={el.node.id}>
+          <Link to={`/product/${el.node.name}`}>{el.node.name}</Link>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export const ProductList = props => {
