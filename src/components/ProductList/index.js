@@ -3,8 +3,6 @@ import React from 'react'
 import {useStaticQuery, graphql, Link} from 'gatsby'
 
 export const PureProductList = ({data}) => {
-  console.log(data)
-
   return (
     <ul>
       {data.allStrapiDish.edges.map(el => (

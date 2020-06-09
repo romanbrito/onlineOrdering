@@ -5,3 +5,31 @@
  */
 
 // You can delete this file if you're not using it
+const path = require(`path`)
+
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions
+  return graphql(`
+    {
+      allStrapiDish {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allStrapiDish.edges.forEach(({node}) => {
+      createPage({
+        path: `/product/${node.name}/`,
+        component: path.resolve(`./src/templates/ProductPage/index.js`),
+        context: {
+          // Data passed to context is avilable
+          // in page queries as GraphQL variables
+          name: node.name,
+        },
+      })
+    })
+  })
+}

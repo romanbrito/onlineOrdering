@@ -1,7 +1,7 @@
 import React from 'react'
 
-const ProductPage = ({data}) => {
-  console.log(data)
+const ProductPage = props => {
+  console.log(props)
   return (
     <>
       <h1>data</h1>
