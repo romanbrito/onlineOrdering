@@ -5,7 +5,7 @@ import {PureProductList as ProductList} from '../index'
 
 test('renders a product list', () => {
   const data = {
-    allStrapiDish: {
+    allStrapiMcallenproduct: {
       edges: [
         {node: {id: 'Dish_1', name: 'test', price: 333}},
         {node: {id: 'Dish_2', name: 'test 2', price: 33}},

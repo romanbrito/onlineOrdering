@@ -11,7 +11,7 @@ exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
   return graphql(`
     {
-      allStrapiDish {
+      allStrapiMcallenproduct {
         edges {
           node {
             name
@@ -20,7 +20,7 @@ exports.createPages = ({graphql, actions}) => {
       }
     }
   `).then(result => {
-    result.data.allStrapiDish.edges.forEach(({node}) => {
+    result.data.allStrapiMcallenproduct.edges.forEach(({node}) => {
       createPage({
         path: `/product/${node.name}/`,
         component: path.resolve(`./src/templates/ProductPage/index.js`),

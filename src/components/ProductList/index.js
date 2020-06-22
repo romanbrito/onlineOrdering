@@ -5,7 +5,7 @@ import {useStaticQuery, graphql, Link} from 'gatsby'
 export const PureProductList = ({data}) => {
   return (
     <ul>
-      {data.allStrapiDish.edges.map(el => (
+      {data.allStrapiMcallenproduct.edges.map(el => (
         <li key={el.node.id}>
           <Link to={`/product/${el.node.name}`}>{el.node.name}</Link>
         </li>
@@ -17,12 +17,11 @@ export const PureProductList = ({data}) => {
 export const ProductList = props => {
   const data = useStaticQuery(graphql`
     query {
-      allStrapiDish {
+      allStrapiMcallenproduct {
         edges {
           node {
             id
             name
-            price
           }
         }
       }
