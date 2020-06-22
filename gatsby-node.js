@@ -15,6 +15,7 @@ exports.createPages = ({graphql, actions}) => {
         edges {
           node {
             name
+            UID
           }
         }
       }
@@ -27,7 +28,7 @@ exports.createPages = ({graphql, actions}) => {
         context: {
           // Data passed to context is avilable
           // in page queries as GraphQL variables
-          name: node.name,
+          UID: node.UID,
         },
       })
     })

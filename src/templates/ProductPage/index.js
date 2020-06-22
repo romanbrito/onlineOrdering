@@ -1,12 +1,22 @@
 import React from 'react'
+import {graphql} from 'gatsby'
 
-const ProductPage = props => {
-  console.log(props)
+export const PureProductPage = ({data}) => {
+  const product = data.strapiMcallenproduct
   return (
     <>
-      <h1>data</h1>
+      <h1>{product.name}</h1>
     </>
   )
 }
 
-export default ProductPage
+export const query = graphql`
+  query($UID: String!) {
+    strapiMcallenproduct(UID: {eq: $UID}) {
+      id
+      name
+    }
+  }
+`
+
+export default PureProductPage
