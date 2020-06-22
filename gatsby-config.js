@@ -17,7 +17,6 @@ module.exports = {
         contentTypes: [
           `mcallenproduct`,
           `mcallenprice`,
-          `price`,
           `product`,
           `restaurant`,
           `category`,
