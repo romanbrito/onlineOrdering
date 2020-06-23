@@ -6,6 +6,9 @@ import Image from '../components/image'
 import SEO from '../components/seo'
 import ProductList from '../components/ProductList'
 
+import Checkout from '../components/checkout'
+import Skus from '../components/Skus'
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -14,6 +17,8 @@ const IndexPage = () => (
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link>
+    <Skus />
+    <Checkout />
   </Layout>
 )
 

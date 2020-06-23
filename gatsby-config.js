@@ -11,6 +11,23 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: [
+          'Balance',
+          'BalanceTransaction',
+          'Product',
+          'Price',
+          'Sku',
+          'ApplicationFee',
+          'Sku',
+          'Subscription',
+        ],
+        secretKey: 'sk_test_l0O5wjfpVrd9qDHv1Qf9AcaT',
+        downloadFiles: true,
+      },
+    },
+    {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: process.env.API_URL || `http://localhost:1337`,
