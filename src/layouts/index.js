@@ -8,11 +8,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useStaticQuery, graphql} from 'gatsby'
-import ContextProvider from '../provider/ContextProvider'
+// import ContextProvider from '../provider/ContextProvider'
+import {loadStripe} from '@stripe/stripe-js'
+import {CartProvider} from 'use-shopping-cart'
 import {Global} from '@emotion/core'
 
 import Header from '../components/header'
-import layoutStyles from '../components/layout-styles'
+import layoutStyles from './layout-styles'
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
 const Layout = ({children}) => {
   const data = useStaticQuery(graphql`
@@ -26,7 +30,15 @@ const Layout = ({children}) => {
   `)
 
   return (
-    <ContextProvider>
+    <CartProvider
+      mode="client-only"
+      stripe={stripePromise}
+      successUrl={`${window.location.origin}/page-2/`}
+      cancelUrl={`${window.location.origin}/`}
+      currency="USD"
+      allowedCountries={['US']}
+      billingAddressCollection={true}
+    >
       <Global styles={layoutStyles} />
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
@@ -43,7 +55,7 @@ const Layout = ({children}) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </ContextProvider>
+    </CartProvider>
   )
 }
 

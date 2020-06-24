@@ -1,10 +1,19 @@
 import React, {useContext} from 'react'
 import {graphql} from 'gatsby'
-import StoreContext from '../../context/StoreContext'
+// import StoreContext from '../../context/StoreContext'
+import {useShoppingCart} from 'use-shopping-cart'
 
 export const PureProductPage = ({data}) => {
-  // console.log(useContext(StoreContext))
-  const {store, updateLineItem} = useContext(StoreContext)
+  // const {store, updateLineItem} = useContext(StoreContext)
+  console.log(useShoppingCart())
+
+  const {
+    totalPrice,
+    redirectToCheckout,
+    cartCount,
+    clearCart,
+    addItem,
+  } = useShoppingCart()
 
   const product = data.strapiMcallenproduct
   const {images, description} = data.strapiMcallenproduct.product
@@ -17,10 +26,24 @@ export const PureProductPage = ({data}) => {
         src={`http://localhost:1337${images[0].formats.thumbnail.url}`}
         alt={product.name}
       />
-      <button onClick={() => updateLineItem('price_HL8k4OzmMCepIk', 1)}>
+      {/* <button onClick={() => addItem('price_HL8k4OzmMCepIk')}> */}
+      <button
+        onClick={() =>
+          addItem({
+            name: product.name,
+            description,
+            sku: 'price_HL8k4OzmMCepIk',
+            price: 400,
+            currency: 'USD',
+            image: `http://localhost:1337${images[0].formats.thumbnail.url}`,
+          })
+        }
+      >
         Upldate line item
       </button>
-      {console.log(store)}
+      <button onClick={redirectToCheckout}>checkout test</button>
+      <button onClick={clearCart}>Clear Cart</button>
+      {console.log(cartCount)}
     </>
   )
 }
