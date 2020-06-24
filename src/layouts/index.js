@@ -8,10 +8,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useStaticQuery, graphql} from 'gatsby'
+import ContextProvider from '../provider/ContextProvider'
 import {Global} from '@emotion/core'
 
-import Header from './header'
-import layoutStyles from './layout-styles'
+import Header from '../components/header'
+import layoutStyles from '../components/layout-styles'
 
 const Layout = ({children}) => {
   const data = useStaticQuery(graphql`
@@ -25,7 +26,7 @@ const Layout = ({children}) => {
   `)
 
   return (
-    <>
+    <ContextProvider>
       <Global styles={layoutStyles} />
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
@@ -42,7 +43,7 @@ const Layout = ({children}) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </ContextProvider>
   )
 }
 

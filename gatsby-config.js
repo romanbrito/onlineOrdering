@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-layout`,
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-stripe`,
