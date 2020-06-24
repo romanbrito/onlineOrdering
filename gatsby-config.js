@@ -24,7 +24,7 @@ module.exports = {
           'Sku',
           'Subscription',
         ],
-        secretKey: 'sk_test_l0O5wjfpVrd9qDHv1Qf9AcaT',
+        secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
       },
     },

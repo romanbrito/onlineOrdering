@@ -1,7 +1,7 @@
 import React from 'react'
 import {loadStripe} from '@stripe/stripe-js'
 
-const stripePromise = loadStripe('pk_test_tccKylDhwDhT44s6rtpyJFfL')
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
 const redirectToCheckout = async event => {
   event.preventDefault()
