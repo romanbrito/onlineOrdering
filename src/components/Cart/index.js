@@ -14,16 +14,27 @@ const Cart = () => {
     <>
       <p>Number of Items: {cartCount}</p>
       {/* <p>Total: {totalPrice()}</p> */}
-      <button
-        disabled={loading}
-        onClick={() => {
-          setLoading(true)
-          redirectToCheckout()
-        }}
-      >
-        {loading ? 'Loading...' : 'Checkout'}
-      </button>
-      <button onClick={clearCart}>Clear Cart</button>
+      {cartCount > 0 ? (
+        <button
+          disabled={loading}
+          onClick={() => {
+            setLoading(true)
+            redirectToCheckout()
+          }}
+        >
+          {loading ? 'Loading...' : 'Checkout'}
+        </button>
+      ) : (
+        <button disabled={true}>Checkout</button>
+      )}
+
+      {loading ? (
+        ''
+      ) : (
+        <button disabled={cartCount < 1} onClick={clearCart}>
+          Clear Cart
+        </button>
+      )}
     </>
   )
 }
