@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useShoppingCart} from 'use-shopping-cart'
+import ClosePage from '../ClosePage'
 
 const Cart = () => {
   const [loading, setLoading] = useState(false)
@@ -12,6 +13,7 @@ const Cart = () => {
 
   return (
     <>
+      <ClosePage />
       <p>Number of Items: {cartCount}</p>
       {/* <p>Total: {totalPrice()}</p> */}
       {cartCount > 0 ? (

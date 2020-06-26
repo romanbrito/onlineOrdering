@@ -7,7 +7,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useStaticQuery, graphql, Link} from 'gatsby'
+import {useStaticQuery, graphql} from 'gatsby'
 // import ContextProvider from '../provider/ContextProvider'
 import {loadStripe} from '@stripe/stripe-js'
 import {CartProvider} from 'use-shopping-cart'
@@ -48,7 +48,6 @@ const Layout = ({children}) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <Link to="/cart">Cart</Link>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with

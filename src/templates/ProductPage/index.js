@@ -43,8 +43,6 @@ export const PureProductPage = ({data}) => {
       >
         Upldate line item
       </button>
-      <button onClick={redirectToCheckout}>checkout test</button>
-      <button onClick={clearCart}>Clear Cart</button>
     </>
   )
 }
