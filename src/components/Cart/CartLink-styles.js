@@ -23,6 +23,7 @@ export const cartLinkStyles = css`
     text-decoration: none;
     display: block;
     width: 90%;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
   }
