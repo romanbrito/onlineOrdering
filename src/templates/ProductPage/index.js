@@ -1,7 +1,8 @@
 import React from 'react'
-import {graphql, Link} from 'gatsby'
+import {graphql} from 'gatsby'
 // import StoreContext from '../../context/StoreContext'
 import {useShoppingCart} from 'use-shopping-cart'
+import ClosePage from '../../components/ClosePage'
 
 export const PureProductPage = ({data}) => {
   // const {store, updateLineItem} = useContext(StoreContext)
@@ -20,6 +21,7 @@ export const PureProductPage = ({data}) => {
   const {images, description} = data.strapiMcallenproduct.product
   return (
     <>
+      <ClosePage />
       <h1>{product.name}</h1>
       <h2>{description}</h2>
       <img
@@ -43,7 +45,6 @@ export const PureProductPage = ({data}) => {
       </button>
       <button onClick={redirectToCheckout}>checkout test</button>
       <button onClick={clearCart}>Clear Cart</button>
-      <Link to="/cart">Cart</Link>
     </>
   )
 }
