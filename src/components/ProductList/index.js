@@ -1,12 +1,12 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import {useStaticQuery, graphql, Link} from 'gatsby'
-import {Card} from './styles'
+import {Cards, Card} from './styles'
 
 export const PureProductList = ({data}) => {
   console.log(data)
   return (
-    <ul>
+    <Cards>
       {data.allStrapiMcallenproduct.edges.map(el => (
         <Card key={el.node.id}>
           <Link to={`/product/${el.node.name}`}>
@@ -21,7 +21,7 @@ export const PureProductList = ({data}) => {
           </Link>
         </Card>
       ))}
-    </ul>
+    </Cards>
   )
 }
 
