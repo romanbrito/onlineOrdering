@@ -16,8 +16,7 @@ export const PureProductList = ({data}) => {
               src={`http://localhost:1337${el.node.product.images[0].formats.thumbnail.url}`}
               alt={el.node.name}
             />
-            <p className="product-description">Description</p>
-            <p className="product-price">$0.00</p>
+            <p className="product-description">{el.node.product.description}</p>
           </Link>
         </Card>
       ))}
@@ -34,6 +33,7 @@ export const ProductList = props => {
             id
             name
             product {
+              description
               images {
                 formats {
                   thumbnail {

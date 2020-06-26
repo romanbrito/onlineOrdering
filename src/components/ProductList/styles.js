@@ -24,11 +24,10 @@ export const Card = styled.li`
     a {
       display: grid;
       grid-template-columns: auto 6em;
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 2fr;
       grid-template-areas:
         'name image'
-        'description image'
-        'price image';
+        'description image';
 
       .product-name {
         grid-area: name;
@@ -40,10 +39,6 @@ export const Card = styled.li`
       }
       .product-description {
         grid-area: description;
-        margin: 0;
-      }
-      .product-price {
-        grid-area: price;
         margin: 0;
       }
     }
