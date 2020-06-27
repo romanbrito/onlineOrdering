@@ -3,6 +3,7 @@ import {graphql} from 'gatsby'
 // import StoreContext from '../../context/StoreContext'
 import {useShoppingCart} from 'use-shopping-cart'
 import ClosePage from '../../components/ClosePage'
+import Price from '../../components/Price'
 
 export const PureProductPage = ({data}) => {
   // const {store, updateLineItem} = useContext(StoreContext)
@@ -14,10 +15,10 @@ export const PureProductPage = ({data}) => {
     cartCount,
     clearCart,
     addItem,
+    cartDetails,
   } = useShoppingCart()
 
   const product = data.strapiMcallenproduct
-  console.log(product)
   const {images, description} = data.strapiMcallenproduct.product
   return (
     <>
@@ -28,21 +29,12 @@ export const PureProductPage = ({data}) => {
         src={`http://localhost:1337${images[0].formats.thumbnail.url}`}
         alt={product.name}
       />
-      {/* <button onClick={() => addItem('price_HL8k4OzmMCepIk')}> */}
-      <button
-        onClick={() =>
-          addItem({
-            name: product.name,
-            description,
-            sku: 'price_HL8k4OzmMCepIk',
-            price: 400,
-            currency: 'USD',
-            image: `http://localhost:1337${images[0].formats.thumbnail.url}`,
-          })
-        }
-      >
-        Upldate line item
-      </button>
+      <Price
+        price={product.mcallenprices}
+        cartDetails={cartDetails}
+        addItem={addItem}
+        product={product}
+      />
     </>
   )
 }
@@ -67,6 +59,12 @@ export const query = graphql`
             }
           }
         }
+      }
+      mcallenprices {
+        uid
+        unit_amount
+        description
+        currency
       }
     }
   }
