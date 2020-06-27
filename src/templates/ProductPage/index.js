@@ -16,8 +16,17 @@ export const PureProductPage = ({data}) => {
     clearCart,
     addItem,
     decrementItem,
+    incrementItem,
     cartDetails,
   } = useShoppingCart()
+
+  const handleAddItem = (item, itemDetails) => {
+    if (itemDetails) {
+      incrementItem(item.sku)
+    } else {
+      addItem(item)
+    }
+  }
 
   const product = data.strapiMcallenproduct
   const {images, description} = data.strapiMcallenproduct.product
@@ -33,7 +42,7 @@ export const PureProductPage = ({data}) => {
       <Price
         price={product.mcallenprices}
         cartDetails={cartDetails}
-        addItem={addItem}
+        handleAddItem={handleAddItem}
         decrementItem={decrementItem}
         product={product}
       />
