@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
-const Price = ({price, cartDetails, addItem, product}) => {
-  console.log(cartDetails)
+const Price = ({price, cartDetails, addItem, decrementItem, product}) => {
   return (
     <>
       {price.map(price => (
@@ -11,10 +10,13 @@ const Price = ({price, cartDetails, addItem, product}) => {
           <div>{price.description}</div>
           <div>{price.uid}</div>
           <div>{price.unit_amount}</div>
-          <button>
+          <button
+            disabled={!cartDetails[price.uid]}
+            onClick={() => decrementItem(price.uid)}
+          >
             <AiOutlineMinusCircle />
           </button>
-          {cartDetails['price_1GyjWXFSqkM4etTHclT9U5l5'].quantity}
+          {cartDetails[price.uid] ? cartDetails[price.uid].quantity : 0}
           <button
             onClick={() =>
               addItem({

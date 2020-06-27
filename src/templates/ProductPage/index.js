@@ -15,6 +15,7 @@ export const PureProductPage = ({data}) => {
     cartCount,
     clearCart,
     addItem,
+    decrementItem,
     cartDetails,
   } = useShoppingCart()
 
@@ -33,6 +34,7 @@ export const PureProductPage = ({data}) => {
         price={product.mcallenprices}
         cartDetails={cartDetails}
         addItem={addItem}
+        decrementItem={decrementItem}
         product={product}
       />
     </>
