@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import {useShoppingCart} from 'use-shopping-cart'
+import {useShoppingCart, formatCurrencyString} from 'use-shopping-cart'
 import ClosePage from '../ClosePage'
+import CartList from './CartList'
 
 const Cart = () => {
   const [loading, setLoading] = useState(false)
@@ -9,13 +10,17 @@ const Cart = () => {
     redirectToCheckout,
     cartCount,
     clearCart,
+    cartDetails,
   } = useShoppingCart()
 
+  const items = Object.values(cartDetails)
+  console.log(items)
   return (
     <>
       <ClosePage />
       <p>Number of Items: {cartCount}</p>
-      {/* <p>Total: {totalPrice()}</p> */}
+      <CartList items={items} />
+      <p>Total: {formatCurrencyString({value: totalPrice, currency: 'USD'})}</p>
       {cartCount > 0 ? (
         <button
           disabled={loading}
