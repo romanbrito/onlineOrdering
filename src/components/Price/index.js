@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {formatCurrencyString} from 'use-shopping-cart'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
@@ -8,7 +9,12 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
       {price.map(price => (
         <div key={price.uid}>
           <div>{price.description}</div>
-          <div>{price.unit_amount}</div>
+          <div>
+            {formatCurrencyString({
+              value: price.unit_amount,
+              currency: price.currency,
+            })}
+          </div>
           <button
             disabled={!cartDetails[price.uid]}
             onClick={() => decrementItem(price.uid)}

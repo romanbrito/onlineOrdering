@@ -1,9 +1,11 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 // import StoreContext from '../../context/StoreContext'
 import {useShoppingCart} from 'use-shopping-cart'
+import {ProdNav} from './styles'
 import ClosePage from '../../components/ClosePage'
 import Price from '../../components/Price'
+import CartLink from '../../components/Cart/CartLink'
 
 export const PureProductPage = ({data}) => {
   // const {store, updateLineItem} = useContext(StoreContext)
@@ -46,6 +48,10 @@ export const PureProductPage = ({data}) => {
         decrementItem={decrementItem}
         product={product}
       />
+      <ProdNav>
+        <Link to="/">Add more food</Link>
+        <CartLink />
+      </ProdNav>
     </>
   )
 }
