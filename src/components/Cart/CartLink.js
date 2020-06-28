@@ -8,7 +8,9 @@ const CartLink = () => {
 
   return (
     <div css={cartLinkStyles}>
-      <Link to="/cart">{cartCount} Items in Order</Link>
+      <Link to="/cart" className={cartCount > 0 ? '' : 'disabled'}>
+        {cartCount} Items in Order
+      </Link>
     </div>
   )
 }

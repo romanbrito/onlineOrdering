@@ -26,5 +26,11 @@ export const cartLinkStyles = css`
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 `
