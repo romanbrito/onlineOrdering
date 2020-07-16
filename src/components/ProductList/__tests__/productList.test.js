@@ -3,6 +3,7 @@ import '@testing-library/jest-dom'
 import {render, fireEvent, screen} from '@testing-library/react'
 import {PureProductList as ProductList} from '../index'
 
+// todo: expand tests
 test('renders a product list', () => {
   const data = {
     allStrapiMcallenproduct: {

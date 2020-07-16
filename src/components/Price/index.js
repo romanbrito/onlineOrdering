@@ -55,7 +55,6 @@ export default Price
 
 /* <div>
 
-Q
 <button
   onClick={() =>
     addItem({

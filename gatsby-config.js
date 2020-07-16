@@ -5,43 +5,43 @@ module.exports = {
   siteMetadata: {
     title: `Texadelphia Online`,
     description: `Texadelphia Online Ordering App`,
-    author: `@gatsbyjs`,
+    author: `@texadelphia`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: [
-          'Balance',
-          'BalanceTransaction',
-          'Product',
-          'Price',
-          'Sku',
-          'ApplicationFee',
-          'Sku',
-          'Subscription',
-        ],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: true,
-      },
-    },
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: process.env.API_URL || `http://localhost:1337`,
-        contentTypes: [
-          `mcallenproduct`,
-          `mcallenprice`,
-          `product`,
-          `restaurant`,
-          `category`,
-        ],
-        queryLimit: 1000,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-stripe`,
+    //   options: {
+    //     objects: [
+    //       'Balance',
+    //       'BalanceTransaction',
+    //       'Product',
+    //       'Price',
+    //       'Sku',
+    //       'ApplicationFee',
+    //       'Sku',
+    //       'Subscription',
+    //     ],
+    //     secretKey: process.env.STRIPE_SECRET_KEY,
+    //     downloadFiles: true,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-strapi`,
+    //   options: {
+    //     apiURL: process.env.API_URL || `http://localhost:1337`,
+    //     contentTypes: [
+    //       `mcallenproduct`,
+    //       `mcallenprice`,
+    //       `product`,
+    //       `restaurant`,
+    //       `category`,
+    //     ],
+    //     queryLimit: 1000,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

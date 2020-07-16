@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {navigate} from 'gatsby'
 import {useShoppingCart, formatCurrencyString} from 'use-shopping-cart'
 import ClosePage from '../ClosePage'
 import CartList from './CartList'
@@ -7,14 +8,18 @@ const Cart = () => {
   const [loading, setLoading] = useState(false)
   const {
     totalPrice,
-    redirectToCheckout,
+    // redirectToCheckout,
     cartCount,
     clearCart,
     cartDetails,
   } = useShoppingCart()
 
   const items = Object.values(cartDetails)
-  console.log(items)
+
+  const redirectToCheckout = () => {
+    navigate('/checkout')
+  }
+
   return (
     <>
       <ClosePage />

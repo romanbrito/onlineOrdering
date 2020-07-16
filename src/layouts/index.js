@@ -31,7 +31,8 @@ const Layout = ({children}) => {
 
   return (
     <CartProvider
-      mode="client-only"
+      // mode="client-only"
+      mode="checkout-session"
       stripe={stripePromise}
       successUrl={`${window.location.origin}/page-2/`}
       cancelUrl={`${window.location.origin}/`}
