@@ -4,13 +4,22 @@ import {formatCurrencyString} from 'use-shopping-cart'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
-  const [mods, setMods] = useState({})
+  const [mods, setMods] = useState([])
   const itemPrice = price[0].modifiers
   const modArray = Object.keys(itemPrice)
 
   const handleClick = e => {
-    console.log(e.target.value)
-    // set state
+    const isAdd = e.target.checked
+    if (isAdd) {
+      setMods([...mods, e.target.value])
+    } else {
+      const newMods = mods.filter(item => item !== e.target.value)
+      setMods(newMods)
+    }
+  }
+
+  const getTotal = (arr, initial) => {
+    return arr.reduce((tot, curr) => tot + itemPrice[curr], parseInt(initial))
   }
 
   return (
@@ -20,23 +29,23 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
           <input
             type="checkbox"
             name={mod}
-            value={itemPrice[mod]}
+            value={mod}
             onChange={e => handleClick(e)}
           />
           <label htmlFor={mod}>{mod}</label>
         </div>
       ))}
-
+      <h5>{getTotal(mods, price[0].unit_amount)}</h5>
       <button
         onClick={() =>
           handleAddItem(
             {
               name: product.name,
-              description: price.description,
-              sku: price.uid,
-              price: price.unit_amount,
+              description: product.description,
+              sku: `item${Date.now()}`,
+              price: getTotal(mods, price[0].unit_amount),
               currency: price.currency,
-              metadata: {product: product.name, modifiers: [{large: 200}]},
+              mods,
             },
             cartDetails[price.uid],
           )

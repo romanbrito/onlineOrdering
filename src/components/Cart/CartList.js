@@ -5,7 +5,7 @@ const CartList = ({items}) => (
     {items &&
       items.map(item => (
         <div key={item.sku}>
-          {item.quantity} {item.name} {item.description} {item.formattedValue}
+          {item.quantity} {item.name} {item.formattedValue}
         </div>
       ))}
   </>

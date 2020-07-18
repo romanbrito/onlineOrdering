@@ -18,6 +18,7 @@ export const PureProductPage = () => {
       id: 1,
       name: 'Texican',
       product: {
+        name: 'Texican',
         description: 'Beef, Grilled Onions, Jalapenos, Queso',
         images: [
           {
@@ -81,7 +82,7 @@ export const PureProductPage = () => {
         cartDetails={cartDetails}
         handleAddItem={handleAddItem}
         decrementItem={decrementItem}
-        product={product}
+        product={product.product}
       />
       <ProdNav>
         <Link to="/">Add more food</Link>
