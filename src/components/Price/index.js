@@ -1,46 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {formatCurrencyString} from 'use-shopping-cart'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
+  const [mods, setMods] = useState({})
+  const itemPrice = price[0].modifiers
+  const modArray = Object.keys(itemPrice)
+
+  const handleClick = e => {
+    console.log(e.target.value)
+    // set state
+  }
+
   return (
     <>
-      {price.map(price => (
-        <div key={price.uid}>
-          <div>{price.description}</div>
-          <div>
-            {formatCurrencyString({
-              value: price.unit_amount,
-              currency: price.currency,
-            })}
-          </div>
-          <button
-            disabled={!cartDetails[price.uid]}
-            onClick={() => decrementItem(price.uid)}
-          >
-            <AiOutlineMinusCircle />
-          </button>
-          {cartDetails[price.uid] ? cartDetails[price.uid].quantity : 0}
-          <button
-            onClick={() =>
-              handleAddItem(
-                {
-                  name: product.name,
-                  description: price.description,
-                  sku: price.uid,
-                  price: price.unit_amount,
-                  currency: price.currency,
-                  metadata: {product: product.name, modifiers: [{large: 200}]},
-                },
-                cartDetails[price.uid],
-              )
-            }
-          >
-            <AiOutlinePlusCircle />
-          </button>
+      {modArray.map(mod => (
+        <div key={mod}>
+          <input
+            type="checkbox"
+            name={mod}
+            value={itemPrice[mod]}
+            onChange={e => handleClick(e)}
+          />
+          <label htmlFor={mod}>{mod}</label>
         </div>
       ))}
+
+      <button
+        onClick={() =>
+          handleAddItem(
+            {
+              name: product.name,
+              description: price.description,
+              sku: price.uid,
+              price: price.unit_amount,
+              currency: price.currency,
+              metadata: {product: product.name, modifiers: [{large: 200}]},
+            },
+            cartDetails[price.uid],
+          )
+        }
+      >
+        <AiOutlinePlusCircle /> Add Item
+      </button>
     </>
   )
 }
