@@ -13,7 +13,7 @@ const Cart = () => {
     clearCart,
     cartDetails,
   } = useShoppingCart()
-  console.log('cart details', cartDetails)
+
   const items = Object.values(cartDetails)
 
   const redirectToCheckout = () => {
