@@ -5,6 +5,8 @@ import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
+  const [loading, setLoading] = useState(false)
+
   const itemPrice = price[0].modifiers
   const modArray = Object.keys(itemPrice)
 
@@ -31,13 +33,16 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
             name={mod}
             value={mod}
             onChange={e => handleClick(e)}
+            className="mod-selection"
           />
           <label htmlFor={mod}>{mod}</label>
         </div>
       ))}
       <h5>{getTotal(mods, price[0].unit_amount)}</h5>
       <button
-        onClick={() =>
+        onClick={() => {
+          const modSelection = document.querySelectorAll('.mod-selection')
+          modSelection.forEach(el => (el.checked = false))
           handleAddItem(
             {
               name: product.name,
@@ -49,7 +54,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
             },
             cartDetails[price.uid],
           )
-        }
+        }}
       >
         <AiOutlinePlusCircle /> Add Item
       </button>
