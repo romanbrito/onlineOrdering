@@ -31,6 +31,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
                   sku: price.uid,
                   price: price.unit_amount,
                   currency: price.currency,
+                  metadata: {product: product.name, modifiers: [{large: 200}]},
                 },
                 cartDetails[price.uid],
               )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {graphql, Link} from 'gatsby'
 // import StoreContext from '../../context/StoreContext'
 import {useShoppingCart} from 'use-shopping-cart'
@@ -16,9 +16,9 @@ export const PureProductPage = () => {
   const data = {
     strapiMcallenproduct: {
       id: 1,
-      name: 'food',
+      name: 'Texican',
       product: {
-        description: 'product 1',
+        description: 'Beef, Grilled Onions, Jalapenos, Queso',
         images: [
           {
             formats: {
@@ -38,12 +38,10 @@ export const PureProductPage = () => {
           description: 'regular',
           unit_amount: '789',
           currency: 'usd',
-        },
-        {
-          uid: 'price2',
-          description: 'large',
-          unit_amount: '1000',
-          currency: 'usd',
+          modifiers: {
+            fries: 129,
+            large: 200,
+          },
         },
       ],
     },
@@ -69,7 +67,7 @@ export const PureProductPage = () => {
 
   const product = data.strapiMcallenproduct
   const {images, description} = data.strapiMcallenproduct.product
-  console.log(product)
+
   return (
     <>
       <ClosePage />
