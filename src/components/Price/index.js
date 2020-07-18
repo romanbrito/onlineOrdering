@@ -24,6 +24,26 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
     return arr.reduce((tot, curr) => tot + itemPrice[curr], parseInt(initial))
   }
 
+  const addItem = () => {
+    setLoading(true)
+    const modSelection = document.querySelectorAll('.mod-selection')
+    modSelection.forEach(el => (el.checked = false))
+    setMods([])
+
+    handleAddItem(
+      {
+        name: product.name,
+        description: product.description,
+        sku: `item${Date.now()}`,
+        price: getTotal(mods, price[0].unit_amount),
+        currency: price.currency,
+        mods,
+      },
+      cartDetails[price.uid],
+    )
+    setTimeout(() => setLoading(false), 300)
+  }
+
   return (
     <>
       {modArray.map(mod => (
@@ -39,24 +59,14 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
         </div>
       ))}
       <h5>{getTotal(mods, price[0].unit_amount)}</h5>
-      <button
-        onClick={() => {
-          const modSelection = document.querySelectorAll('.mod-selection')
-          modSelection.forEach(el => (el.checked = false))
-          handleAddItem(
-            {
-              name: product.name,
-              description: product.description,
-              sku: `item${Date.now()}`,
-              price: getTotal(mods, price[0].unit_amount),
-              currency: price.currency,
-              mods,
-            },
-            cartDetails[price.uid],
-          )
-        }}
-      >
-        <AiOutlinePlusCircle /> Add Item
+      <button onClick={addItem} disabled={loading}>
+        {loading ? (
+          'Adding...'
+        ) : (
+          <div>
+            <AiOutlinePlusCircle /> Add Item
+          </div>
+        )}
       </button>
     </>
   )
