@@ -5,6 +5,7 @@ import CardSection from './CardSection'
 
 const CheckoutForm = ({totalPrice}) => {
   const [data, setData] = useState({
+    nameOnCard: '',
     address: '',
     city: '',
     state: '',
@@ -26,7 +27,10 @@ const CheckoutForm = ({totalPrice}) => {
 
       <h5>Your information:</h5>
       <hr />
-
+      <div style={{flex: '0.90', marginRight: 10}}>
+        name on card
+        <input name="nameOnCard" onChange={onChange} />
+      </div>
       <div style={{flex: '0.90', marginRight: 10}}>
         address
         <input name="address" onChange={onChange} />
