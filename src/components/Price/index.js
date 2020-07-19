@@ -58,7 +58,12 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
           <label htmlFor={mod}>{mod}</label>
         </div>
       ))}
-      <h5>{getTotal(mods, price[0].unit_amount)}</h5>
+      <h5>
+        {formatCurrencyString({
+          value: getTotal(mods, price[0].unit_amount),
+          currency: 'USD',
+        })}
+      </h5>
       <button onClick={addItem} disabled={loading}>
         {loading ? (
           'Adding...'

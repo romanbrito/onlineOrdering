@@ -12,7 +12,7 @@ export const ProductCard = styled.li`
     }
     .product-image {
       grid-area: image;
-      margin: 0;
+      margin: 0 auto;
     }
     .product-description {
       grid-area: description;
