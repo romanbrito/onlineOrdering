@@ -27,7 +27,7 @@ export const PureProductPage = () => {
                 url: 'https://picsum.photos/id/1043/200/200.jpg',
               },
               medium: {
-                url: 'https://picsum.photos/id/1043/300/300.jpg',
+                url: 'https://picsum.photos/id/1043/300/150.jpg',
               },
             },
           },
