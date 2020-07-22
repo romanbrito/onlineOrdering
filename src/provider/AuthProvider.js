@@ -3,8 +3,10 @@ import Context from '../context/AuthContext'
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 
-const getUser = () => sleep(1000).then(() => ({username: 'elmo'}))
-// .then(() => null)
+const getUser = () =>
+  sleep(1000)
+    .then(() => ({username: 'elmo'}))
+    .then(() => null)
 
 const ContextProvider = ({children}) => {
   let initialState = {

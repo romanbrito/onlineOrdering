@@ -5,6 +5,7 @@ import {Elements} from '@stripe/react-stripe-js'
 import {useShoppingCart} from 'use-shopping-cart'
 import InjectedCheckoutForm from '../components/checkout/CheckoutForm'
 import ClosePage from '../components/ClosePage'
+import LoginForm from '../components/Forms/LoginForm'
 
 const Checkout = () => {
   const {user} = useAuthState()
@@ -19,7 +20,7 @@ const Checkout = () => {
       <InjectedCheckoutForm totalPrice={totalPrice} />
     </Elements>
   ) : (
-    <div>Login Please</div>
+    <LoginForm />
   )
 }
 
