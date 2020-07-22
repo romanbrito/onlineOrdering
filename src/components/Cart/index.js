@@ -14,6 +14,7 @@ const Cart = () => {
     cartDetails,
   } = useShoppingCart()
 
+  console.log(cartDetails)
   const items = Object.values(cartDetails)
 
   const redirectToCheckout = () => {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import {v4 as uuidv4} from 'uuid'
 import {formatCurrencyString} from 'use-shopping-cart'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 
@@ -30,14 +31,17 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
     modSelection.forEach(el => (el.checked = false))
     setMods([])
 
+    console.log('price', price)
+    console.log('product', product)
     handleAddItem(
       {
         name: product.name,
         description: product.description,
-        sku: `item${Date.now()}`,
+        sku: `item${uuidv4()}`,
         price: getTotal(mods, price[0].unit_amount),
         currency: price.currency,
         mods,
+        uid: price[0].uid,
       },
       cartDetails[price.uid],
     )
