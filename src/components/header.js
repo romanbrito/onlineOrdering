@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'gatsby'
 import PropTypes from 'prop-types'
 import useAuthState from '../hooks/useAuthState'
+import {logout} from '../lib/auth'
 
 const Header = ({siteTitle}) => {
   const {user} = useAuthState()
@@ -30,6 +31,7 @@ const Header = ({siteTitle}) => {
           >
             <h2>{siteTitle}</h2>
             <h5>hello {user && user.username}</h5>
+            <button onClick={logout}>Logout</button>
           </Link>
         </div>
       </div>

@@ -30,3 +30,10 @@ export const login = async ({email: identifier, password}) => {
 
   return res
 }
+
+export const logout = () => {
+  // remove token and user cookie
+  Cookie.remove('token')
+  // todo: remove console.log
+  console.log('logout')
+}
