@@ -5,7 +5,19 @@ import useAuthState from '../hooks/useAuthState'
 import {logout} from '../lib/auth'
 
 const Header = ({siteTitle}) => {
-  const {user} = useAuthState()
+  const {
+    state: {user},
+    setState,
+  } = useAuthState()
+
+  const handleLogout = () => {
+    logout()
+    setState({
+      status: 'success',
+      error: null,
+      user: null,
+    })
+  }
 
   return (
     <header
@@ -31,7 +43,7 @@ const Header = ({siteTitle}) => {
           >
             <h2>{siteTitle}</h2>
             <h5>hello {user && user.username}</h5>
-            <button onClick={logout}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </Link>
         </div>
       </div>

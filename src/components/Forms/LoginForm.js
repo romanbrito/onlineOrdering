@@ -2,9 +2,15 @@ import React from 'react'
 import {Formik} from 'formik'
 import * as Yup from 'yup'
 import {login} from '../../lib/auth'
+import useAuthState from '../../hooks/useAuthState'
 import {formStyles} from './LoginForm-styles'
 
 const ValidatedLoginForm = () => {
+  const {
+    state: {user},
+    setState,
+  } = useAuthState()
+
   return (
     <div css={formStyles}>
       <Formik
@@ -14,7 +20,12 @@ const ValidatedLoginForm = () => {
           //   console.log('logging in', values)
           //   setSubmitting(false)
           // }, 500)
-          await login(values)
+          const {user} = await login(values)
+          setState({
+            status: 'success',
+            error: null,
+            user,
+          })
           setSubmitting(false)
         }}
         validationSchema={Yup.object().shape({

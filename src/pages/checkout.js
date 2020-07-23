@@ -8,7 +8,10 @@ import ClosePage from '../components/ClosePage'
 import LoginForm from '../components/Forms/LoginForm'
 
 const Checkout = () => {
-  const {user} = useAuthState()
+  const {
+    state: {user},
+    setState,
+  } = useAuthState()
   const {totalPrice} = useShoppingCart()
 
   console.log('checkout total price', totalPrice)

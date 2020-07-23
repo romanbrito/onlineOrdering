@@ -47,10 +47,12 @@ const ContextProvider = ({children}) => {
       user => setState({status: 'success', error: null, user}),
       error => setState({status: 'error', error, user: null}),
     )
+    // useEffect clean up
+    return () => {}
   }, [])
 
   return (
-    <Context.Provider value={state}>
+    <Context.Provider value={{state, setState}}>
       {state.status === 'pending' ? (
         'Loading...'
       ) : state.status === 'error' ? (
