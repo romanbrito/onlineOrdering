@@ -1,3 +1,4 @@
+import Cookie from 'js-cookie'
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337'
 
 export const login = async ({email: identifier, password}) => {
@@ -17,11 +18,15 @@ export const login = async ({email: identifier, password}) => {
       password,
     }),
   })
-  // todo: remove console.log
-  console.log('response', response)
+
   if (!response.ok) {
     console.error(response.statusText)
+    return
   }
 
-  return response
+  //set token response on cookie
+  const res = await response.json()
+  Cookie.set('token', res.jwt)
+
+  return res
 }
