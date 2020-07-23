@@ -52,7 +52,7 @@ const CheckoutForm = ({totalPrice}) => {
         token: token.token.id,
       }),
     })
-
+    // todo: remove console.log
     console.log('response', response)
     if (!response.ok) {
       setError(response.statusText)

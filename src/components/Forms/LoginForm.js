@@ -1,6 +1,7 @@
 import React from 'react'
 import {Formik} from 'formik'
 import * as Yup from 'yup'
+import {login} from '../../lib/auth'
 import {formStyles} from './LoginForm-styles'
 
 const ValidatedLoginForm = () => {
@@ -8,18 +9,20 @@ const ValidatedLoginForm = () => {
     <div css={formStyles}>
       <Formik
         initialValues={{email: '', password: ''}}
-        onSubmit={(values, {setSubmitting}) => {
-          setTimeout(() => {
-            console.log('logging in', values)
-            setSubmitting(false)
-          }, 500)
+        onSubmit={async (values, {setSubmitting}) => {
+          // setTimeout(() => {
+          //   console.log('logging in', values)
+          //   setSubmitting(false)
+          // }, 500)
+          await login(values)
+          setSubmitting(false)
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email().required('Required'),
           password: Yup.string()
             .required('No password provided.')
-            .min(8, 'Password is too short -should be 8 chars minimum.')
-            .matches(/(?=.*[0-9])/, 'Password must contain a number.'),
+            .min(8, 'Password is too short -should be 8 chars minimum.'),
+          // .matches(/(?=.*[0-9])/, 'Password must contain a number.'),
         })}
       >
         {props => {
