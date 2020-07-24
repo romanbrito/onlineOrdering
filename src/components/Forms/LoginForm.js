@@ -5,14 +5,15 @@ import {login} from '../../lib/auth'
 import useAuthState from '../../hooks/useAuthState'
 import {formStyles} from './LoginForm-styles'
 
-const ValidatedLoginForm = () => {
+const ValidatedLoginForm = ({signIn}) => {
   const {
     state: {user},
     setState,
   } = useAuthState()
 
   return (
-    !user && (
+    !user &&
+    signIn && (
       <div css={formStyles}>
         <Formik
           initialValues={{email: '', password: ''}}
