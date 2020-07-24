@@ -10,13 +10,12 @@ import LoginForm from '../components/Forms/LoginForm'
 const Checkout = () => {
   const {
     state: {user},
-    setState,
   } = useAuthState()
   const {totalPrice} = useShoppingCart()
 
   console.log('checkout total price', totalPrice)
   // load stripe to inject into elements components
-  const stripePromise = loadStripe('pk_test_tccKylDhwDhT44s6rtpyJFfL')
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
   return user ? (
     <Elements stripe={stripePromise}>
       <ClosePage />
