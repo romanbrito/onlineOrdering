@@ -29,7 +29,6 @@
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
     "use-shopping-cart": "^2.1.0",
-    "uuid": "^8.2.0",
     "yup": "^0.29.1"
   },
   "devDependencies": {
