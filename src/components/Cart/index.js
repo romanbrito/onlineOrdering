@@ -12,6 +12,9 @@ const Cart = () => {
     cartCount,
     clearCart,
     cartDetails,
+    removeItem,
+    incrementItem,
+    decrementItem,
   } = useShoppingCart()
 
   console.log(cartDetails)
@@ -25,7 +28,12 @@ const Cart = () => {
     <>
       <ClosePage />
       <p>Number of Items: {cartCount}</p>
-      <CartList items={items} />
+      <CartList
+        items={items}
+        removeItem={removeItem}
+        incrementItem={incrementItem}
+        decrementItem={decrementItem}
+      />
       <p>Total: {formatCurrencyString({value: totalPrice, currency: 'USD'})}</p>
       {cartCount > 0 ? (
         <button
