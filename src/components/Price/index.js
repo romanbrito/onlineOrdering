@@ -10,13 +10,13 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const itemPrice = price[0].modifiers
   const modArray = Object.keys(itemPrice)
 
-  const handleClick = e => {
+  const handleMod = e => {
     const isAdd = e.target.checked
     if (isAdd) {
-      setMods([...mods, e.target.value])
+      setMods([...mods, e.target.value].sort())
     } else {
       const newMods = mods.filter(item => item !== e.target.value)
-      setMods(newMods)
+      setMods(newMods.sort())
     }
   }
 
@@ -58,7 +58,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
             type="checkbox"
             name={mod}
             value={mod}
-            onChange={e => handleClick(e)}
+            onChange={e => handleMod(e)}
             className="mod-selection"
           />
           <label htmlFor={mod}>{mod}</label>
