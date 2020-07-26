@@ -58,11 +58,11 @@ export const PureProductPage = () => {
     cartDetails,
   } = useShoppingCart()
 
-  const handleAddItem = (item, itemDetails) => {
+  const handleAddItem = (item, itemDetails, quantity) => {
     if (itemDetails) {
-      incrementItem(item.sku)
+      incrementItem(item.sku, quantity)
     } else {
-      addItem(item)
+      addItem(item, quantity)
     }
   }
 
