@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import {signup} from '../../lib/auth'
 import useAuthState from '../../hooks/useAuthState'
 import {formStyles} from './SignUpForm-styles'
+import LoginGoogle from './LoginGoogle'
 
 // todo: add first name, last name, address, telephone, etc.
 const ValidatedSignUpForm = ({signIn}) => {
@@ -102,6 +103,8 @@ const ValidatedSignUpForm = ({signIn}) => {
             )
           }}
         </Formik>
+
+        <LoginGoogle />
       </div>
     )
   )
