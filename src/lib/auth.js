@@ -1,5 +1,5 @@
-import Cookie from 'js-cookie'
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337'
+import Cookies from 'js-cookie'
+const API_URL = process.env.API_URL || 'http://localhost:1337'
 
 export const login = async ({email: identifier, password}) => {
   // todo: make sure this is needed
@@ -24,9 +24,9 @@ export const login = async ({email: identifier, password}) => {
     return
   }
 
-  //set token response on cookie
+  //set token response on cookies
   const res = await response.json()
-  Cookie.set('token', res.jwt)
+  Cookies.set('token', res.jwt)
 
   return res
 }
@@ -45,16 +45,16 @@ export const loginProvider = async (provider, search) => {
     return
   }
 
-  //set token response on cookie
+  //set token response on cookies
   const res = await response.json()
-  Cookie.set('token', res.jwt)
+  Cookies.set('token', res.jwt)
 
   return res
 }
 
 export const logout = () => {
-  // remove token and user cookie
-  Cookie.remove('token')
+  // remove token and user cookies
+  Cookies.remove('token')
   // todo: remove console.log
   console.log('logout')
 }
@@ -84,9 +84,9 @@ export const signup = async ({username, email, password}) => {
     return
   }
 
-  //set token response on cookie
+  //set token response on cookies
   const res = await response.json()
-  Cookie.set('token', res.jwt)
+  Cookies.set('token', res.jwt)
 
   return res
 }

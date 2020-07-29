@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
+import Cookies from 'js-cookie'
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
 import {formatCurrencyString} from 'use-shopping-cart'
 
 import CardSection from './CardSection'
+
+const API_URL = process.env.API_URL || 'http://localhost:1337'
 
 const CheckoutForm = ({totalPrice}) => {
   const [data, setData] = useState({
@@ -33,13 +36,8 @@ const CheckoutForm = ({totalPrice}) => {
   const submitOrder = async () => {
     const cardElement = elements.getElement(CardElement)
     const token = await stripe.createToken(cardElement)
-    console.log('token', token)
-    console.log('data', data)
-    // todo: move url address to environment var
-    const userToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTk1MTk1MTI3LCJleHAiOjE1OTc3ODcxMjd9.58-3Hj7MbcKyn8wstnlo9fxa4SVA1iXmKJ6uwjldghU'
-
-    const response = await fetch('http://localhost:1337/orders', {
+    const userToken = Cookies.get('token')
+    const response = await fetch(`${API_URL}/orders`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${userToken}`,

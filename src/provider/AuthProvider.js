@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 import Context from '../context/AuthContext'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337'
+const API_URL = process.env.API_URL || 'http://localhost:1337'
 
 // const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 // const getUser = () =>
@@ -11,8 +11,8 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337'
 //     .then(() => null)
 
 const getUser = async () => {
-  // grab token from cookie
-  const token = Cookie.get('token')
+  // grab token from cookies
+  const token = Cookies.get('token')
 
   if (token) {
     const response = await fetch(`${API_URL}/users/me`, {
@@ -23,7 +23,7 @@ const getUser = async () => {
     })
 
     if (!response.ok) {
-      Cookie.remove('token')
+      Cookies.remove('token')
       console.error(response.statusText)
       return null
     }
