@@ -31,6 +31,27 @@ export const login = async ({email: identifier, password}) => {
   return res
 }
 
+export const loginProvider = async (provider, search) => {
+  // todo: make sure this is needed
+  // prevent function from being ran on the server
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const response = await fetch(`${API_URL}/auth/${provider}/callback${search}`)
+
+  if (!response.ok) {
+    console.error(response.statusText)
+    return
+  }
+
+  //set token response on cookie
+  const res = await response.json()
+  Cookie.set('token', res.jwt)
+
+  return res
+}
+
 export const logout = () => {
   // remove token and user cookie
   Cookie.remove('token')
