@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import {render, getByText} from '@testing-library/react'
+import {render} from '@testing-library/react'
 import {PureCartLink as CartLink} from '../CartLink'
 
 test('disable CartLink if no items in order', () => {

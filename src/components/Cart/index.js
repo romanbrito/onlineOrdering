@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {navigate} from 'gatsby'
 import {useShoppingCart, formatCurrencyString} from 'use-shopping-cart'
-import ClosePage from '../ClosePage'
 import CartList from './CartList'
 
 const Cart = () => {
@@ -26,7 +25,6 @@ const Cart = () => {
 
   return (
     <>
-      <ClosePage />
       <p>Number of Items: {cartCount}</p>
       <CartList
         items={items}

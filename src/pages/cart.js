@@ -1,11 +1,12 @@
 import React from 'react'
-
+import ClosePage from '../components/ClosePage'
 import Cart from '../components/Cart'
 
 const CartPage = () => (
-  <div>
+  <>
+    <ClosePage />
     <Cart />
-  </div>
+  </>
 )
 
 export default CartPage
