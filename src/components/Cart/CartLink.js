@@ -3,9 +3,7 @@ import {useShoppingCart} from 'use-shopping-cart'
 import {Link} from 'gatsby'
 import {cartLinkStyles} from './CartLink-styles'
 
-const CartLink = () => {
-  const {cartCount} = useShoppingCart()
-
+export const PureCartLink = ({cartCount}) => {
   return (
     <div css={cartLinkStyles}>
       <Link to="/cart" className={cartCount > 0 ? '' : 'disabled'}>
@@ -13,6 +11,11 @@ const CartLink = () => {
       </Link>
     </div>
   )
+}
+
+export const CartLink = props => {
+  const {cartCount} = useShoppingCart()
+  return <PureCartLink {...props} cartCount={cartCount}></PureCartLink>
 }
 
 export default CartLink
