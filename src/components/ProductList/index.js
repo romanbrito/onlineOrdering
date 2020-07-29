@@ -5,9 +5,11 @@ import Card from '../Card'
 import {Cards} from './styles'
 
 export const PureProductList = ({data}) => {
-  return (
+  const items = data ? data.allStrapiMcallenproduct.edges : []
+
+  return items.length ? (
     <Cards>
-      {data.allStrapiMcallenproduct.edges.map(el => (
+      {items.map(el => (
         <Link to={`/product/${el.node.name}`} key={el.node.id}>
           <Card
             name={el.node.name}
@@ -17,56 +19,34 @@ export const PureProductList = ({data}) => {
         </Link>
       ))}
     </Cards>
+  ) : (
+    <div className="no-items">No items</div>
   )
 }
 
 export const ProductList = props => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allStrapiMcallenproduct {
-  //       edges {
-  //         node {
-  //           id
-  //           name
-  //           product {
-  //             description
-  //             images {
-  //               formats {
-  //                 thumbnail {
-  //                   url
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  const data = {
-    allStrapiMcallenproduct: {
-      edges: [
-        {
-          node: {
-            id: 1,
-            name: 'food',
-            product: {
-              description: 'product 1',
-              images: [
-                {
-                  formats: {
-                    thumbnail: {
-                      url: 'https://picsum.photos/id/1043/200/200.jpg',
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        },
-      ],
-    },
-  }
+  const data = useStaticQuery(graphql`
+    query {
+      allStrapiMcallenproduct {
+        edges {
+          node {
+            id
+            name
+            product {
+              description
+              images {
+                formats {
+                  thumbnail {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return <PureProductList {...props} data={data}></PureProductList>
 }

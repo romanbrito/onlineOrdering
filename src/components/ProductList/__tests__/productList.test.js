@@ -1,21 +1,62 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import {render, fireEvent, screen} from '@testing-library/react'
+import {render} from '@testing-library/react'
 import {PureProductList as ProductList} from '../index'
 
-// todo: expand tests
+// todo: remove the following, used just as reference
+// import {render, fireEvent, screen} from '@testing-library/react'
+
 test('renders a product list', () => {
   const data = {
     allStrapiMcallenproduct: {
       edges: [
-        {node: {id: 'Dish_1', name: 'test', price: 333}},
-        {node: {id: 'Dish_2', name: 'test 2', price: 33}},
+        {
+          node: {
+            id: 1,
+            name: 'food1',
+            product: {
+              description: 'product 1',
+              images: [
+                {
+                  formats: {
+                    thumbnail: {
+                      url: 'https://picsum.photos/id/1043/200/200.jpg',
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+        {
+          node: {
+            id: 2,
+            name: 'food2',
+            product: {
+              description: 'product 2',
+              images: [
+                {
+                  formats: {
+                    thumbnail: {
+                      url: 'https://picsum.photos/id/1043/200/200.jpg',
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
       ],
     },
   }
 
-  render(<ProductList data={data} />)
-  const len = document.querySelectorAll('li').length
+  const {container} = render(<ProductList data={data} />)
+  const len = container.querySelectorAll('li').length
   expect(len).toBe(2)
-  expect(document.querySelector('a').getAttribute('href')).toBe('/product/test')
+  expect(container.querySelector('a').getAttribute('href')).toBe(
+    '/product/food1',
+  )
+
+  const {getByText} = render(<ProductList data={null} />)
+  expect(getByText('No items')).toBeInTheDocument()
 })
