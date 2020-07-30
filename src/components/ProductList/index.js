@@ -25,28 +25,71 @@ export const PureProductList = ({data}) => {
 }
 
 export const ProductList = props => {
-  const data = useStaticQuery(graphql`
-    query {
-      allStrapiMcallenproduct {
-        edges {
-          node {
-            id
-            name
-            product {
-              description
-              images {
-                formats {
-                  thumbnail {
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allStrapiMcallenproduct {
+  //       edges {
+  //         node {
+  //           id
+  //           name
+  //           product {
+  //             description
+  //             images {
+  //               formats {
+  //                 thumbnail {
+  //                   url
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
+  const data = {
+    allStrapiMcallenproduct: {
+      edges: [
+        {
+          node: {
+            id: 1,
+            name: 'food1',
+            product: {
+              description: 'product 1',
+              images: [
+                {
+                  formats: {
+                    thumbnail: {
+                      url: 'https://picsum.photos/id/1043/200/200.jpg',
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+        {
+          node: {
+            id: 2,
+            name: 'food2',
+            product: {
+              description: 'product 2',
+              images: [
+                {
+                  formats: {
+                    thumbnail: {
+                      url: 'https://picsum.photos/id/1043/200/200.jpg',
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  }
 
   return <PureProductList {...props} data={data}></PureProductList>
 }

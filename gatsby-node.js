@@ -18,10 +18,27 @@ exports.createPages = ({graphql, actions}) => {
           {
             node: {
               id: 1,
-              name: 'food',
-              UID: '1',
+              name: 'food1',
               product: {
                 description: 'product 1',
+                images: [
+                  {
+                    formats: {
+                      thumbnail: {
+                        url: 'https://picsum.photos/id/1043/200/200.jpg',
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            node: {
+              id: 2,
+              name: 'food2',
+              product: {
+                description: 'product 2',
                 images: [
                   {
                     formats: {
