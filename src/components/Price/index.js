@@ -7,10 +7,10 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
   const [loading, setLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  console.log('price', price)
   const itemPrice = price.modifiers
   const modArray = Object.keys(itemPrice)
 
+  console.log('product', product)
   const handleMod = e => {
     const isAdd = e.target.checked
     if (isAdd) {
@@ -91,21 +91,3 @@ Price.propTypes = {
 }
 
 export default Price
-
-/* <div>
-
-<button
-  onClick={() =>
-    addItem({
-      name: product.name,
-      description,
-      sku: 'price_HL8k4OzmMCepIk',
-      price: 400,
-      currency: 'USD',
-      image: `http://localhost:1337${images.formats.thumbnail.url}`,
-    })
-  }
->
-  <AiOutlinePlusCircle />
-</button>
-</div>  */

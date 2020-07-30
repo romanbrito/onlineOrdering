@@ -44,8 +44,6 @@ export const PureProductPage = ({data}) => {
       </ProdNav>
     </>
   )
-
-  // return (<div>hello</div>)
 }
 
 // Get product data from strapi using UID: product, description, images, prices and modifiers
@@ -55,6 +53,7 @@ export const query = graphql`
       id
       name
       product {
+        name
         description
         images {
           formats {
