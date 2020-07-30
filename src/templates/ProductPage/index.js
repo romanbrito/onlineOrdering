@@ -7,43 +7,9 @@ import Card from '../../components/ProductCard'
 import Price from '../../components/Price'
 import CartLink from '../../components/Cart/CartLink'
 
-// export const PureProductPage = ({data}) => {
-export const PureProductPage = () => {
-  // todo: remove fixture data
-  const data = {
-    strapiMcallenproduct: {
-      id: 1,
-      name: 'Texican',
-      product: {
-        name: 'Texican',
-        description: 'Beef, Grilled Onions, Jalapenos, Queso',
-        images: [
-          {
-            formats: {
-              thumbnail: {
-                url: 'https://picsum.photos/id/1043/200/200.jpg',
-              },
-              medium: {
-                url: 'https://picsum.photos/id/1043/300/150.jpg',
-              },
-            },
-          },
-        ],
-      },
-      mcallenprices: [
-        {
-          uid: 'price1',
-          description: 'regular',
-          unit_amount: '789',
-          currency: 'usd',
-          modifiers: {
-            fries: 129,
-            large: 200,
-          },
-        },
-      ],
-    },
-  }
+const API_URL = process.env.API_URL || 'http://localhost:1337'
+
+export const PureProductPage = ({data}) => {
   const {addItem, decrementItem, incrementItem, cartDetails} = useShoppingCart()
 
   const handleAddItem = (item, itemDetails, quantity) => {
@@ -63,10 +29,10 @@ export const PureProductPage = () => {
       <Card
         name={product.name}
         description={description}
-        image={images[0].formats.medium.url}
+        image={`${API_URL}${images[0].formats.small.url}`}
       />
       <Price
-        price={product.mcallenprices}
+        price={product.mcallenprice}
         cartDetails={cartDetails}
         handleAddItem={handleAddItem}
         decrementItem={decrementItem}
@@ -83,35 +49,40 @@ export const PureProductPage = () => {
 }
 
 // Get product data from strapi using UID: product, description, images, prices and modifiers
-// export const query = graphql`
-//   query($UID: String!) {
-//     strapiMcallenproduct(UID: {eq: $UID}) {
-//       id
-//       name
-//       product {
-//         description
-//         images {
-//           formats {
-//             medium {
-//               url
-//             }
-//             small {
-//               url
-//             }
-//             thumbnail {
-//               url
-//             }
-//           }
-//         }
-//       }
-//       mcallenprices {
-//         uid
-//         unit_amount
-//         description
-//         currency
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query($id: String!) {
+    strapiMcallenproduct(id: {eq: $id}) {
+      id
+      name
+      product {
+        description
+        images {
+          formats {
+            medium {
+              url
+            }
+            small {
+              url
+            }
+            thumbnail {
+              url
+            }
+          }
+        }
+      }
+      mcallenprice {
+        id
+        name
+        unit_amount
+        description
+        currency
+        modifiers {
+          fries
+          large
+        }
+      }
+    }
+  }
+`
 
 export default PureProductPage

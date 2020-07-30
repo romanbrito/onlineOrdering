@@ -28,20 +28,20 @@ module.exports = {
     //     downloadFiles: true,
     //   },
     // },
-    // {
-    //   resolve: `gatsby-source-strapi`,
-    //   options: {
-    //     apiURL: process.env.API_URL || `http://localhost:1337`,
-    //     contentTypes: [
-    //       `mcallenproduct`,
-    //       `mcallenprice`,
-    //       `product`,
-    //       `restaurant`,
-    //       `category`,
-    //     ],
-    //     queryLimit: 1000,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: process.env.API_URL || `http://localhost:1337`,
+        contentTypes: [
+          `mcallenproduct`,
+          `mcallenprice`,
+          // `product`,
+          // `restaurant`,
+          // `category`,
+        ],
+        queryLimit: 1000,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

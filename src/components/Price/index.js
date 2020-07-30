@@ -7,7 +7,8 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
   const [loading, setLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const itemPrice = price[0].modifiers
+  console.log('price', price)
+  const itemPrice = price.modifiers
   const modArray = Object.keys(itemPrice)
 
   const handleMod = e => {
@@ -28,19 +29,16 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
     setLoading(true)
     const modSelection = document.querySelectorAll('.mod-selection')
     modSelection.forEach(el => (el.checked = false))
-
-    console.log('price', price)
-    console.log('product', product)
     const sku = `${product.name}${mods.length ? '_' : ''}${mods.join('_')}`
     handleAddItem(
       {
         name: product.name,
         description: product.description,
         sku,
-        price: getTotal(mods, price[0].unit_amount),
+        price: getTotal(mods, price.unit_amount),
         currency: price.currency,
         mods,
-        uid: price[0].uid,
+        uid: price.uid,
       },
       cartDetails[sku],
       quantity,
@@ -66,7 +64,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
       ))}
       <h5>
         {formatCurrencyString({
-          value: getTotal(mods, price[0].unit_amount),
+          value: getTotal(mods, price.unit_amount),
           currency: 'USD',
         })}
       </h5>
@@ -86,7 +84,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
 }
 
 Price.propTypes = {
-  price: PropTypes.array,
+  price: PropTypes.object,
   cartDetails: PropTypes.object,
   addItem: PropTypes.func,
   product: PropTypes.object,
@@ -104,7 +102,7 @@ export default Price
       sku: 'price_HL8k4OzmMCepIk',
       price: 400,
       currency: 'USD',
-      image: `http://localhost:1337${images[0].formats.thumbnail.url}`,
+      image: `http://localhost:1337${images.formats.thumbnail.url}`,
     })
   }
 >
