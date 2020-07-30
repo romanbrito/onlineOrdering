@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {graphql, Link} from 'gatsby'
-// import StoreContext from '../../context/StoreContext'
 import {useShoppingCart} from 'use-shopping-cart'
 import {ProdNav} from './styles'
 import ClosePage from '../../components/ClosePage'
@@ -10,8 +9,6 @@ import CartLink from '../../components/Cart/CartLink'
 
 // export const PureProductPage = ({data}) => {
 export const PureProductPage = () => {
-  // const {store, updateLineItem} = useContext(StoreContext)
-
   // todo: remove fixture data
   const data = {
     strapiMcallenproduct: {
@@ -47,16 +44,7 @@ export const PureProductPage = () => {
       ],
     },
   }
-  const {
-    totalPrice,
-    redirectToCheckout,
-    cartCount,
-    clearCart,
-    addItem,
-    decrementItem,
-    incrementItem,
-    cartDetails,
-  } = useShoppingCart()
+  const {addItem, decrementItem, incrementItem, cartDetails} = useShoppingCart()
 
   const handleAddItem = (item, itemDetails, quantity) => {
     if (itemDetails) {
