@@ -76,8 +76,7 @@ export const query = graphql`
         description
         currency
         modifiers {
-          fries
-          large
+          product_modifiers
         }
       }
     }

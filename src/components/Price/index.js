@@ -7,10 +7,9 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
   const [loading, setLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const itemPrice = price.modifiers
+  const itemPrice = JSON.parse(price.modifiers.product_modifiers)
   const modArray = Object.keys(itemPrice)
 
-  console.log('product', product)
   const handleMod = e => {
     const isAdd = e.target.checked
     if (isAdd) {
