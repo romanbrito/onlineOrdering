@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {formatCurrencyString} from 'use-shopping-cart'
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
+import Checkbox from '../Checkbox'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
@@ -50,16 +51,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   return (
     <>
       {modArray.map(mod => (
-        <div key={mod}>
-          <input
-            type="checkbox"
-            name={mod}
-            value={mod}
-            onChange={e => handleMod(e)}
-            className="mod-selection"
-          />
-          <label htmlFor={mod}>{mod}</label>
-        </div>
+        <Checkbox key={mod} mod={mod} handleMod={handleMod} />
       ))}
       <h5>
         {formatCurrencyString({
