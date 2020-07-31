@@ -14,7 +14,7 @@ import {loadStripe} from '@stripe/stripe-js'
 import {CartProvider} from 'use-shopping-cart'
 import {Global} from '@emotion/core'
 
-import Header from '../components/header'
+import Header from '../components/Header'
 import layoutStyles from './layout-styles'
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
