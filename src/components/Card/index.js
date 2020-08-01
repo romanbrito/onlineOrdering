@@ -5,12 +5,7 @@ const CardComponent = ({name, image, description}) => {
   return (
     <Card>
       <h3 className="product-name">{name}</h3>
-      <img
-        className="product-image"
-        // src={`http://localhost:1337${product.node.product.images[0].formats.thumbnail.url}`}
-        src={image}
-        alt={name}
-      />
+      <img className="product-image" src={image} alt={name} />
       <p className="product-description">{description}</p>
     </Card>
   )
