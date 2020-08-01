@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {graphql, Link} from 'gatsby'
+import SEO from '../../components/seo'
 import {useShoppingCart} from 'use-shopping-cart'
 import {ProdNav} from './styles'
 import ClosePage from '../../components/ClosePage'
@@ -25,6 +26,7 @@ export const PureProductPage = ({data}) => {
 
   return (
     <>
+      <SEO title={product.name} description={description} />
       <ClosePage />
       <Card
         name={product.name}
