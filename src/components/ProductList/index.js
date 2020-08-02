@@ -25,17 +25,28 @@ export const PureProductList = ({data}) => {
     }, {})
   }
 
+  const toggleCategories = e => {
+    e.target.classList.contains('hide')
+      ? e.target.classList.remove('hide')
+      : e.target.classList.add('hide')
+  }
+
   return items.length ? (
     <Cards>
-      {console.log(buildCategories(items))}
-      {items.map(el => (
-        <Link to={`/product/${el.node.name}`} key={el.node.id}>
-          <Card
-            name={el.node.name}
-            image={`${API_URL}${el.node.product.images[0].formats.thumbnail.url}`}
-            description={el.node.product.description}
-          />
-        </Link>
+      {Object.keys(buildCategories(items)).map(category => (
+        <section key={category} onClick={toggleCategories}>
+          {category}
+
+          {buildCategories(items)[category].map(el => (
+            <Link to={`/product/${el.node.name}`} key={el.node.id}>
+              <Card
+                name={el.node.name}
+                image={`${API_URL}${el.node.product.images[0].formats.thumbnail.url}`}
+                description={el.node.product.description}
+              />
+            </Link>
+          ))}
+        </section>
       ))}
     </Cards>
   ) : (

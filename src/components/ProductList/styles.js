@@ -18,4 +18,10 @@ export const Cards = styled.ul`
     margin: -5px 5px 5px -5px;
     box-shadow: 5px 5px 0px 0px hsla(0, 0%, 70%, 0.8);
   }
+
+  .hide {
+    a {
+      display: none;
+    }
+  }
 `
