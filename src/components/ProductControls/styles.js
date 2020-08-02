@@ -22,6 +22,14 @@ export const QButton = styled.button`
   }
 
   &.add-order {
-    width: 13rem;
+    width: 12rem;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
   }
+`
+export const Quantity = styled.span`
+  font-size: 1rem;
+  color: green;
+  font-weight: 700;
+  margin-right: 5px;
 `

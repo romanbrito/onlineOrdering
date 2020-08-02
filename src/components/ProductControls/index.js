@@ -1,6 +1,6 @@
 import React from 'react'
 import {MdAdd, MdRemove, MdAddShoppingCart} from 'react-icons/md'
-import {QButton} from './styles'
+import {QButton, Quantity} from './styles'
 
 const ProductControls = ({quantity, setQuantity, addItem, loading}) => {
   return (
@@ -11,10 +11,10 @@ const ProductControls = ({quantity, setQuantity, addItem, loading}) => {
       >
         <MdRemove />
       </QButton>
-      {quantity}
+      <Quantity>{quantity}</Quantity>
       <QButton
         onClick={() => setQuantity(quantity + 1)}
-        disabled={quantity > 10}
+        disabled={quantity > 8}
       >
         <MdAdd />
       </QButton>
