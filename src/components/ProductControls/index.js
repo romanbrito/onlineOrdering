@@ -19,7 +19,7 @@ const ProductControls = ({quantity, setQuantity, addItem, loading}) => {
         <MdAdd />
       </QButton>
 
-      <QButton onClick={addItem} disabled={loading}>
+      <QButton onClick={addItem} disabled={loading} className="add-order">
         {loading ? 'Adding...' : 'Add to order'} <MdAddShoppingCart />
       </QButton>
     </>

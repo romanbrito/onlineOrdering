@@ -15,4 +15,13 @@ export const QButton = styled.button`
   font-weight: 700;
   outline: none;
   // transition: all 0.3s;
+
+  svg {
+    vertical-align: middle;
+    font-size: 1.5rem;
+  }
+
+  &.add-order {
+    width: 13rem;
+  }
 `
