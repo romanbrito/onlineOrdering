@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {formatCurrencyString} from 'use-shopping-cart'
-import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
 import Checkbox from '../Checkbox'
+import ProductControls from '../ProductControls'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
@@ -59,17 +59,12 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
           currency: 'USD',
         })}
       </h5>
-      <button disabled={quantity < 2} onClick={() => setQuantity(quantity - 1)}>
-        <AiOutlineMinusCircle />
-      </button>
-      {quantity}
-      <button onClick={() => setQuantity(quantity + 1)}>
-        <AiOutlinePlusCircle />
-      </button>
-
-      <button onClick={addItem} disabled={loading}>
-        {loading ? 'Adding...' : 'Add to order'}
-      </button>
+      <ProductControls
+        quantity={quantity}
+        setQuantity={setQuantity}
+        addItem={addItem}
+        loading={loading}
+      />
     </>
   )
 }
