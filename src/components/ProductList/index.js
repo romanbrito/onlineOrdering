@@ -35,7 +35,7 @@ export const PureProductList = ({data}) => {
     <Cards>
       {Object.keys(buildCategories(items)).map(category => (
         <section key={category} onClick={toggleCategories}>
-          {category}
+          {category.replace('_', ' ')}
 
           {buildCategories(items)[category].map(el => (
             <Link to={`/product/${el.node.name}`} key={el.node.id}>
