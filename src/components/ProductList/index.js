@@ -9,8 +9,25 @@ const API_URL = process.env.API_URL || 'http://localhost:1337'
 export const PureProductList = ({data}) => {
   const items = data ? data.allStrapiMcallenproduct.edges : []
 
+  const getItemsIn = category => {
+    return items.filter(item => item.node.product.category === category)
+  }
+
+  const buildCategories = items => {
+    return items.reduce((allCategories, item) => {
+      const category = item.node.product.category
+      if (allCategories[category]) {
+        // do nothing
+      } else {
+        allCategories[category] = [...getItemsIn(category)]
+      }
+      return allCategories
+    }, {})
+  }
+
   return items.length ? (
     <Cards>
+      {console.log(buildCategories(items))}
       {items.map(el => (
         <Link to={`/product/${el.node.name}`} key={el.node.id}>
           <Card
