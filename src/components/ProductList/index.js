@@ -36,6 +36,7 @@ export const ProductList = props => {
             name
             product {
               description
+              category
               images {
                 formats {
                   thumbnail {
