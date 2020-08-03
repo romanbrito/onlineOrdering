@@ -26,6 +26,10 @@ export const PureProductList = ({data}) => {
   }
 
   const toggleCategories = e => {
+    const categories = document.querySelectorAll('.category')
+    categories.forEach(
+      category => category !== e.target && category.classList.add('hide'),
+    )
     e.target.classList.contains('hide')
       ? e.target.classList.remove('hide')
       : e.target.classList.add('hide')
@@ -35,7 +39,9 @@ export const PureProductList = ({data}) => {
     <Cards>
       {Object.keys(buildCategories(items)).map(category => (
         <section key={category}>
-          <h2 onClick={toggleCategories}>{category.replace('_', ' ')}</h2>
+          <h2 onClick={toggleCategories} className="category">
+            {category.replace('_', ' ')}
+          </h2>
 
           {buildCategories(items)[category].map(el => (
             <Link to={`/product/${el.node.name}`} key={el.node.id}>
