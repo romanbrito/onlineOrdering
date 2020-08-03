@@ -19,9 +19,15 @@ export const Cards = styled.ul`
     box-shadow: 5px 5px 0px 0px hsla(0, 0%, 70%, 0.8);
   }
 
-  .hide {
-    a {
-      display: none;
-    }
+  .hide ~ a {
+    display: none;
+  }
+
+  h2 {
+    text-transform: capitalize;
+    background: green;
+    color: #ffffff;
+    padding: 1rem;
+    cursor: pointer;
   }
 `
