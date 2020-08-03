@@ -29,5 +29,6 @@ export const Cards = styled.ul`
     color: #ffffff;
     padding: 1rem;
     cursor: pointer;
+    user-select: none;
   }
 `
