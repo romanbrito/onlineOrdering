@@ -7,6 +7,7 @@ export const Cards = styled.ul`
   list-style: none;
 
   a {
+    display: block;
     color: hsl(0, 0%, 5%);
     text-decoration: none;
     background: white;
