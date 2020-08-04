@@ -4,6 +4,28 @@ export const Cards = styled.ul`
   max-width: 700px;
   margin: 0 auto;
 
+  @supports (grid-area: auto) {
+    display: grid;
+    grid-template-areas:
+      'starters'
+      'signature_cheesesteaks'
+      'build_your_own'
+      'for_the_kiddos';
+
+    .starters {
+      grid-area: starters;
+    }
+    .signature_cheesesteaks {
+      grid-area: signature_cheesesteaks;
+    }
+    .build_your_own {
+      grid-area: build_your_own;
+    }
+    .for_the_kiddos {
+      grid-area: for_the_kiddos;
+    }
+  }
+
   list-style: none;
 
   a {
