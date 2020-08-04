@@ -39,7 +39,7 @@ export const PureProductList = ({data}) => {
     <Cards>
       {Object.keys(buildCategories(items)).map(category => (
         <section key={category} className={category}>
-          <h2 onClick={toggleCategories} className="category">
+          <h2 onClick={toggleCategories} className="category hide">
             {category.replace('_', ' ')}
           </h2>
 
