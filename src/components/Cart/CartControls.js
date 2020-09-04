@@ -21,16 +21,16 @@ const CartControls = ({cartCount, clearCart}) => {
           {loading ? 'Loading...' : 'Checkout'}
         </QButton>
       ) : (
-        <QButton disabled={true}>Checkout</QButton>
+        ''
       )}
 
-      {loading ? (
-        ''
-      ) : (
-        <QButton disabled={cartCount < 1} onClick={clearCart}>
-          Clear Cart
-        </QButton>
-      )}
+      {loading
+        ? ''
+        : cartCount > 0 && (
+            <QButton disabled={cartCount < 1} onClick={clearCart}>
+              Clear Cart
+            </QButton>
+          )}
     </>
   )
 }
