@@ -54,6 +54,7 @@ const ValidatedLoginForm = ({signIn}) => {
                 <input
                   name="email"
                   type="text"
+                  id="email"
                   placeholder="Enter your email"
                   value={values.email}
                   onChange={handleChange}
@@ -65,10 +66,11 @@ const ValidatedLoginForm = ({signIn}) => {
                   <div className="input-feedback">{errors.email}</div>
                 )}
 
-                <label htmlFor="email">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   name="password"
                   type="password"
+                  id="password"
                   placeholder="Enter your password"
                   value={values.password}
                   onChange={handleChange}

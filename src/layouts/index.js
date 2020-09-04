@@ -12,6 +12,7 @@ import {useStaticQuery, graphql} from 'gatsby'
 import AuthProvider from '../provider/AuthProvider'
 import {loadStripe} from '@stripe/stripe-js'
 import {CartProvider} from 'use-shopping-cart'
+import {Elements} from '@stripe/react-stripe-js'
 import {Global} from '@emotion/core'
 
 import Header from '../components/Header'
@@ -32,27 +33,20 @@ const Layout = ({children}) => {
 
   return (
     <AuthProvider>
-      <CartProvider
-        // mode="client-only"
-        mode="checkout-session"
-        stripe={stripePromise}
-        successUrl={`${window.location.origin}/page-2/`}
-        cancelUrl={`${window.location.origin}/`}
-        currency="USD"
-        allowedCountries={['US']}
-        billingAddressCollection={true}
-      >
-        <Global styles={layoutStyles} />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0 1.0875rem 1.45rem`,
-          }}
-        >
-          <main>{children}</main>
-        </div>
+      <CartProvider currency="USD">
+        <Elements stripe={stripePromise}>
+          <Global styles={layoutStyles} />
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <div
+            style={{
+              margin: `0 auto`,
+              maxWidth: 960,
+              padding: `0 1.0875rem 1.45rem`,
+            }}
+          >
+            <main>{children}</main>
+          </div>
+        </Elements>
       </CartProvider>
     </AuthProvider>
   )
