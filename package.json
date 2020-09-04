@@ -2,7 +2,7 @@
   "name": "gatsby-online-store",
   "private": true,
   "description": "Gatsby, stripe, strapi online store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Roman Brito <romanbrito1@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.28",
