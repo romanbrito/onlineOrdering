@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {navigate} from 'gatsby'
+import {QButton} from './CartControls-styles'
 
 const CartControls = ({cartCount, clearCart}) => {
   const [loading, setLoading] = useState(false)
@@ -10,7 +11,7 @@ const CartControls = ({cartCount, clearCart}) => {
   return (
     <>
       {cartCount > 0 ? (
-        <button
+        <QButton
           disabled={loading}
           onClick={() => {
             setLoading(true)
@@ -18,17 +19,17 @@ const CartControls = ({cartCount, clearCart}) => {
           }}
         >
           {loading ? 'Loading...' : 'Checkout'}
-        </button>
+        </QButton>
       ) : (
-        <button disabled={true}>Checkout</button>
+        <QButton disabled={true}>Checkout</QButton>
       )}
 
       {loading ? (
         ''
       ) : (
-        <button disabled={cartCount < 1} onClick={clearCart}>
+        <QButton disabled={cartCount < 1} onClick={clearCart}>
           Clear Cart
-        </button>
+        </QButton>
       )}
     </>
   )
