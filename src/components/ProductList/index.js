@@ -3,8 +3,7 @@ import React from 'react'
 import {useStaticQuery, graphql, Link} from 'gatsby'
 import Card from '../Card'
 import {Cards} from './styles'
-
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../../config/api'
 
 export const PureProductList = ({data}) => {
   const items = data ? data.allStrapiMcallenproduct.edges : []

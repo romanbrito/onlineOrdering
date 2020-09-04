@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
-
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../config/api'
 
 export const createOrder = async values => {
   const userToken = Cookies.get('token')

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../config/api'
 
 export const login = async ({email: identifier, password}) => {
   // todo: make sure this is needed

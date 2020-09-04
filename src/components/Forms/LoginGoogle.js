@@ -1,8 +1,7 @@
 import React from 'react'
 import {FaGoogle} from 'react-icons/fa'
 import {SocLink} from './LoginGoogle-styles'
-
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../../config/api'
 
 const SocialLink = () => {
   return (

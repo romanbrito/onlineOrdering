@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 import Context from '../context/AuthContext'
-
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../config/api'
 
 // const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 // const getUser = () =>

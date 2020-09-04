@@ -6,8 +6,7 @@ import {ProdNav} from './styles'
 import Card from '../../components/ProductCard'
 import Price from '../../components/Price'
 import CartLink from '../../components/Cart/CartLink'
-
-const API_URL = process.env.API_URL || 'http://localhost:1337'
+import {API_URL} from '../../config/api'
 
 export const PureProductPage = ({data}) => {
   const {addItem, decrementItem, incrementItem, cartDetails} = useShoppingCart()
