@@ -23,6 +23,7 @@ export const PureProductPage = ({data}) => {
   const {images, description} = data.strapiMcallenproduct.product
   //remove
   console.log('api url', API_URL)
+  console.log('process api', process.env.API_URL)
 
   return (
     <>
