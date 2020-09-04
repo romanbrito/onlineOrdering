@@ -10,6 +10,10 @@ export const Items = styled.div`
     white-space: nowrap;
     overflow: auto;
   }
+
+  svg {
+    vertical-align: middle;
+  }
 `
 
 export const Quantity = styled.span`
@@ -17,4 +21,5 @@ export const Quantity = styled.span`
   color: green;
   font-weight: 700;
   margin-right: 5px;
+  cursor: pointer;
 `
