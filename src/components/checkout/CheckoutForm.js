@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {navigate} from 'gatsby'
 import {
-  CardElement,
   CardNumberElement,
   CardExpiryElement,
   CardCvcElement,
@@ -23,6 +22,7 @@ const CheckoutForm = ({totalPrice, clearCart}) => {
 
   const stripe = useStripe()
   const elements = useElements()
+  const {cartDetails} = useShoppingCart()
 
   const formattedPrice = formatCurrencyString({
     value: totalPrice,
@@ -50,6 +50,7 @@ const CheckoutForm = ({totalPrice, clearCart}) => {
             ...values,
             amount: totalPrice,
             token: token.token.id,
+            dishes: cartDetails,
           })
           // todo: remove console.log
           console.log('response', response)
@@ -243,12 +244,6 @@ const CheckoutForm = ({totalPrice, clearCart}) => {
                   CVC
                   <CardCvcElement options={cardStyles} />
                 </label>
-                {/* <label>
-                  Card details
-                  <CardElement 
-                    options={cardStyles}
-                  />
-                </label> */}
               </div>
 
               <button type="submit" disabled={isSubmitting}>
