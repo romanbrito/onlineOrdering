@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {formatCurrencyString} from 'use-shopping-cart'
 import Checkbox from '../Checkbox'
 import ProductControls from '../ProductControls'
+import {PriceContainer} from './styles'
 
 const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   const [mods, setMods] = useState([])
@@ -49,7 +50,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
   }
 
   return (
-    <>
+    <PriceContainer>
       {modArray.map(mod => (
         <Checkbox key={mod} mod={mod} handleMod={handleMod} />
       ))}
@@ -65,7 +66,7 @@ const Price = ({price, cartDetails, handleAddItem, decrementItem, product}) => {
         addItem={addItem}
         loading={loading}
       />
-    </>
+    </PriceContainer>
   )
 }
 
